@@ -8,11 +8,11 @@ spring:
     username: 'luv4code'
     password: 'postgres'
     url: jdbc:postgresql://localhost:5432/fraud
-    jpa:
-      properties:
-        hibernate:
-          dialect: org.hibernate.dialect.PostgreSQLDialect
-          format_sql: 'true'
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
       hibernate:
-        ddl-auto: update
-      show-sql: 'true'
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
