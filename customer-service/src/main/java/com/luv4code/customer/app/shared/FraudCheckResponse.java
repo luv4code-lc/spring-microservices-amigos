@@ -1,11 +1,12 @@
 package com.luv4code.customer.app.shared;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
 public class FraudCheckResponse {
     private Boolean isFraudster;
-
-    public FraudCheckResponse(Boolean isFraudster) {
-        this.isFraudster = isFraudster;
-    }
 
     public Boolean isFraudster() {
         return false;
