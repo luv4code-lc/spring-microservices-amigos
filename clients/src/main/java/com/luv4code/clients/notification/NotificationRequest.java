@@ -10,15 +10,15 @@ public class NotificationRequest {
     private String toCustomerName;
     private String message;
 
-    public Integer toCustomerId() {
+    public Integer getToCustomerId() {
         return toCustomerId;
     }
 
-    public String toCustomerName() {
+    public String getToCustomerName() {
         return toCustomerName;
     }
 
-    public String message() {
+    public String getMessage() {
         return message;
     }
 
