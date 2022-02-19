@@ -23,7 +23,7 @@ public class CustomerService {
                 .build();
         customerRepository.saveAndFlush(customer);
         FraudCheckResponse fraudCheckResponse = restTemplate.getForObject(
-                "http://localhost:8001/api/v1/fraud-check/{customerId}",
+                "http://FRAUD-SERVICE/api/v1/fraud-check/{customerId}",
                 FraudCheckResponse.class,
                 customer.getId()
         );
