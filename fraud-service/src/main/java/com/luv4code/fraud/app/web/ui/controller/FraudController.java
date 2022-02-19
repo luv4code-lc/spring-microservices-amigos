@@ -1,7 +1,7 @@
 package com.luv4code.fraud.app.web.ui.controller;
 
+import com.luv4code.clients.fraud.FraudCheckResponse;
 import com.luv4code.fraud.app.service.FraudCheckService;
-import com.luv4code.fraud.app.web.ui.model.response.FraudCheckResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;

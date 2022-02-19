@@ -1,7 +1,8 @@
 package com.luv4code.customer.app.service;
 
+import com.luv4code.clients.fraud.FraudCheckResponse;
+import com.luv4code.clients.fraud.FraudClient;
 import com.luv4code.customer.app.repository.CustomerRepository;
-import com.luv4code.customer.app.shared.FraudCheckResponse;
 import com.luv4code.customer.app.web.ui.model.Customer;
 import com.luv4code.customer.app.web.ui.model.request.CustomerRegistrationRequest;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,7 @@ public class CustomerService {
 
     private final CustomerRepository customerRepository;
     private final RestTemplate restTemplate;
+    private final FraudClient fraudClient;
 
     public void registerCustomer(CustomerRegistrationRequest request) {
         Customer customer = Customer.builder()
@@ -22,11 +24,8 @@ public class CustomerService {
                 .email(request.getEmail())
                 .build();
         customerRepository.saveAndFlush(customer);
-        FraudCheckResponse fraudCheckResponse = restTemplate.getForObject(
-                "http://FRAUD-SERVICE/api/v1/fraud-check/{customerId}",
-                FraudCheckResponse.class,
-                customer.getId()
-        );
+
+        FraudCheckResponse fraudCheckResponse = fraudClient.isFraudster(customer.getId());
         if (fraudCheckResponse.isFraudster()) {
             throw new IllegalStateException("fraudster");
         }
