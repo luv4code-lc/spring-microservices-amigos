@@ -21,4 +21,5 @@ public class NotificationRequest {
     public String message() {
         return message;
     }
+
 }
