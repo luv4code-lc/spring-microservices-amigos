@@ -15,6 +15,7 @@
         <module>clients</module>
         <module>notification-service</module>
         <module>gateway-service</module>
+        <module>amqp</module>
     </modules>
 
     <name>spring-microservices-amigos</name>
