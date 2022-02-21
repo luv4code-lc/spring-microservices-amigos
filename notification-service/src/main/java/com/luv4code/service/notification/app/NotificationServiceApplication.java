@@ -2,6 +2,9 @@ package com.luv4code.service.notification.app;
 
 import com.luv4code.amqp.RabbitMQMessageProducer;
 import com.luv4code.service.notification.app.config.NotificationConfig;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,17 +22,26 @@ public class NotificationServiceApplication {
         SpringApplication.run(NotificationServiceApplication.class, args);
     }
 
-    /*@Bean
+   /* @Bean
     CommandLineRunner commandLineRunner(
             RabbitMQMessageProducer producer,
             NotificationConfig notificationConfig
     ) {
         return args -> {
             producer.publish(
-                    "foo",
+                    new Person("Madhav", 28),
                     notificationConfig.getInternalExchange(),
                     notificationConfig.getInternalNotificationRoutingKey());
         };
+    }
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    class Person {
+        String name;
+        int age;
+
     }*/
 
 }
